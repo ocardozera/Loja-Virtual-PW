@@ -24,12 +24,12 @@ public class Funcionario implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date dataSaida;
     private String cargo;
-    private String cidade;
+    @ManyToOne
+    private Cidade cidade;
     private String logradouro;
     private String numero;
     private String complemento;
     private String bairro;
-    private String uf;
     private String cep;
 
     public Long getId() {
@@ -80,14 +80,6 @@ public class Funcionario implements Serializable {
         this.cargo = cargo;
     }
 
-    public String getCidade() {
-        return cidade;
-    }
-
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
-
     public String getLogradouro() {
         return logradouro;
     }
@@ -120,19 +112,19 @@ public class Funcionario implements Serializable {
         this.bairro = bairro;
     }
 
-    public String getUf() {
-        return uf;
-    }
-
-    public void setUf(String uf) {
-        this.uf = uf;
-    }
-
     public String getCep() {
         return cep;
     }
 
     public void setCep(String cep) {
         this.cep = cep;
+    }
+
+    public Cidade getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(Cidade cidade) {
+        this.cidade = cidade;
     }
 }

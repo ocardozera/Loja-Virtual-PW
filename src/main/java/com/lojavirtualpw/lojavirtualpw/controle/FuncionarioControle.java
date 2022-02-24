@@ -1,6 +1,7 @@
 package com.lojavirtualpw.lojavirtualpw.controle;
 
 import com.lojavirtualpw.lojavirtualpw.modelos.Funcionario;
+import com.lojavirtualpw.lojavirtualpw.repositorios.CidadeRepositorio;
 import com.lojavirtualpw.lojavirtualpw.repositorios.FuncionarioRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,10 +21,14 @@ public class FuncionarioControle {
     @Autowired
     private FuncionarioRepositorio funcionarioRepositorio;
 
+    @Autowired
+    private CidadeRepositorio cidadeRepositorio;
+
     @GetMapping("/administrativo/funcionarios/cadastrar")
     public ModelAndView cadastrar(Funcionario funcionario) {
         ModelAndView mv = new ModelAndView("administrativo/funcionarios/cadastro");
         mv.addObject("funcionario", funcionario);
+        mv.addObject("listaCidades", cidadeRepositorio.findAll());
         return mv;
     }
 

@@ -4,10 +4,10 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name="cidade")
-public class Cidade implements Serializable {
+@Table(name="papel")
+public class Papel implements Serializable {
 
-    public Cidade() {
+    public Papel() {
         super();
     }
 
@@ -17,8 +17,6 @@ public class Cidade implements Serializable {
     private Long id;
 
     private String nome;
-    @ManyToOne
-    private Estado estado;
 
     public Long getId() {
         return id;
@@ -34,18 +32,5 @@ public class Cidade implements Serializable {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public Estado getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Estado estado) {
-        this.estado = estado;
-    }
-
-    @Override
-    public String toString() {
-        return nome + " - " + estado.getSigla();
     }
 }
