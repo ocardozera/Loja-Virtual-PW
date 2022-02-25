@@ -4,6 +4,7 @@ import com.lojavirtualpw.lojavirtualpw.modelos.Funcionario;
 import com.lojavirtualpw.lojavirtualpw.repositorios.CidadeRepositorio;
 import com.lojavirtualpw.lojavirtualpw.repositorios.FuncionarioRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -57,9 +58,13 @@ public class FuncionarioControle {
     @PostMapping("/administrativo/funcionarios/salvar")
     public ModelAndView salvar(@Valid Funcionario funcionario, BindingResult result) {
 
+        System.out.println(result.getAllErrors());
+
         if (result.hasErrors()) {
             return cadastrar(funcionario);
         }
+
+        funcionario.setSenha(new BCryptPasswordEncoder().encode(funcionario.getSenha()));
 
         funcionarioRepositorio.saveAndFlush(funcionario);
 

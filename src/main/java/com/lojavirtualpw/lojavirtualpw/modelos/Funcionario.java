@@ -31,6 +31,8 @@ public class Funcionario implements Serializable {
     private String complemento;
     private String bairro;
     private String cep;
+    private String email;
+    private String senha;
 
     public Long getId() {
         return id;
@@ -126,5 +128,21 @@ public class Funcionario implements Serializable {
 
     public void setCidade(Cidade cidade) {
         this.cidade = cidade;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 }
